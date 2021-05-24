@@ -1,0 +1,28 @@
+{% macro render_text_field(field) %}
+	{{ field(class_="form-control",**kwargs)|safe }}
+	{% for error in field.errors %}
+	<span style="color:red;">{{ error }}</span>
+	{% endfor %}
+{% endmacro %}
+
+{% macro render_field(field) %}
+	{{ field.label }}
+	{{ field(**kwargs)|safe }}
+	{% for error in field.errors %}
+	<span style="color:red;">Поставьте галочку</span>
+	{% endfor %}
+{% endmacro %}
+
+{% macro render_email_field(field) %}
+	{{ field(class_="form-control",**kwargs)|safe }}
+	{% for error in field.errors %}
+	<span style="color:red;">{{ error }}</span>
+	{% endfor %}
+{% endmacro %}
+
+{% macro render_textarea_field(field) %}
+	{{ field(rows="9",class_="form-control",**kwargs)|safe }}
+	{% for error in field.errors %}
+	<span style="color:red;">{{ error }}</span>
+	{% endfor %}
+{% endmacro %}

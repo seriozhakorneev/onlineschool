@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ru" prefix="og: //ogp.me/ns#">
+  <head>
+    <meta charset="utf-8">
+    <title>Занятия</title>
+    <meta property="og:title" content="3 класс" />
+    <meta property="og:image" content="{{ url_for('static', filename='img/logo.jpg') }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.min.css') }}">
+    <style type="text/css">
+    li {list-style-type: none; /* Убираем маркеры */}
+    A {text-decoration: none; /* Убирает подчеркивание для ссылок */}
+    A:hover {text-decoration: underline; /* Добавляем подчеркивание при наведении курсора на ссылку */}
+    </style>
+  </head>
+
+{% if current_user.class_var == 'pre_class' %}
+{% set class_name = 'Подготовка к школе' %}
+{% set monday1 = 'я-ученик' %}
+{% set monday2 = 'обучение грамоте' %}
+{% set monday3 = 'подготовка к письму' %}
+{% set tuesday1 = 'обучение грамоте' %}
+{% set tuesday2 = 'подготовка к письму' %}
+{% set tuesday3 = 'математика' %}
+{% set wednesday1 = 'окружающий мир' %}
+{% set wednesday2 = 'подготовка к письму' %}
+{% set wednesday3 = 'математика' %}
+{% set thursday1 = 'обучение грамоте' %}
+{% set thursday2 = 'подготовка к письму' %}
+{% set thursday3 = 'математика' %}
+{% set friday1 = 'мир художественной литературы' %}
+{% set friday2 = 'подготовка к письму' %}
+{% set friday3 = 'математика' %}
+
+{% elif current_user.class_var == 'first_class' %}
+{% set class_name = '1 класс' %}
+{% set monday1 = 'обучение грамоте' %}
+{% set monday2 = 'письмо' %}
+{% set monday3 = 'математика' %}
+{% set tuesday1 = 'обучение грамоте' %}
+{% set tuesday2 = 'письмо' %}
+{% set tuesday3 = 'математика' %}
+{% set wednesday1 = 'обучение грамоте' %}
+{% set wednesday2 = 'письмо' %}
+{% set wednesday3 = 'окружающий мир' %}
+{% set thursday1 = 'обучение грамоте' %}
+{% set thursday2 = 'письмо' %}
+{% set thursday3 = 'математика' %}
+{% set friday1 = 'математика' %}
+{% set friday2 = 'окружающий мир' %}
+{% set friday3 = 'мир художественной литературы' %}
+
+{% elif current_user.class_var == 'second_class' %}
+{% set class_name = '2 класс' %}
+{% set monday1 = 'русский язык' %}
+{% set monday2 = 'литературное чтение' %}
+{% set monday3 = 'математика' %}
+{% set tuesday1 = 'русский язык' %}
+{% set tuesday2 = 'математика' %}
+{% set tuesday3 = 'окружающий мир' %}
+{% set wednesday1 = 'русский язык' %}
+{% set wednesday2 = 'литературное чтение' %}
+{% set wednesday3 = 'математика' %}
+{% set thursday1 = 'русский язык' %}
+{% set thursday2 = 'литературное чтение' %}
+{% set thursday3 = 'окружающий мир' %}
+{% set friday1 = 'русский язык' %}
+{% set friday2 = 'математика' %}
+{% set friday3 = 'риторика/решение логических задач' %}
+
+{% elif current_user.class_var == 'third_class' %}
+{% set class_name = '3 класс' %}
+{% set monday1 = 'русский язык' %}
+{% set monday2 = 'литературное чтение' %}
+{% set monday3 = 'математика' %}
+{% set tuesday1 = 'русский язык' %}
+{% set tuesday2 = 'математика' %}
+{% set tuesday3 = 'окружающий мир' %}
+{% set wednesday1 = 'русский язык' %}
+{% set wednesday2 = 'литературное чтение' %}
+{% set wednesday3 = 'математика' %}
+{% set thursday1 = 'русский язык' %}
+{% set thursday2 = 'литературное чтение' %}
+{% set thursday3 = 'окружающий мир' %}
+{% set friday1 = 'русский язык' %}
+{% set friday2 = 'математика' %}
+{% set friday3 = 'развитие речи' %}
+
+{% elif current_user.class_var == 'fourth_class' %}
+{% set class_name = '4 класс' %}
+{% set monday1 = 'русский язык' %}
+{% set monday2 = 'литературное чтение' %}
+{% set monday3 = 'математика' %}
+{% set tuesday1 = 'русский язык' %}
+{% set tuesday2 = 'математика' %}
+{% set tuesday3 = 'окружающий мир' %}
+{% set wednesday1 = 'русский язык' %}
+{% set wednesday2 = 'литературное чтение' %}
+{% set wednesday3 = 'математика' %}
+{% set thursday1 = 'русский язык' %}
+{% set thursday2 = 'литературное чтение' %}
+{% set thursday3 = 'окружающий мир' %}
+{% set friday1 = 'русский язык' %}
+{% set friday2 = 'математика' %}
+{% set friday3 = 'подготовка к ВПР' %}
+
+{% elif current_user.class_var == 'indi_class' %}
+{% set class_name = 'Индивидуальная программа' %}
+{% set monday1 = '1 урок' %}
+{% set monday2 = '2 урок' %}
+{% set monday3 = '3 урок' %}
+{% set tuesday1 = '1 урок' %}
+{% set tuesday2 = '2 урок' %}
+{% set tuesday3 = '3 урок' %}
+{% set wednesday1 = '1 урок' %}
+{% set wednesday2 = '2 урок' %}
+{% set wednesday3 = '3 урок' %}
+{% set thursday1 = '1 урок' %}
+{% set thursday2 = '2 урок' %}
+{% set thursday3 = '3 урок' %}
+{% set friday1 = '1 урок' %}
+{% set friday2 = '2 урок' %}
+{% set friday3 = '3 урок' %}
+
+{% endif %}
+
+
+  <body class="text-black">
+
+    <div class="navbar navbar-expand-lg fixed-top navbar-light bg-light" style="font-size: 20px;">
+    <div class="container">
+    <a href="{{ url_for('logout') }}" class="nav-link">← Выйти</a>
+    </div>
+    </div>
+
+    <div class="container">
+    <p class="text-center" style="font-size: 45px;">{{ class_name }}</p>
+    <div class="row">
+    <div class="col-lg-9"></div>
+    <div class="col-lg-3">
+    <a href="https://time.is/Moscow" id="time_is_link" rel="nofollow" style="font-size:36px" target="_blank">
+    <small>Москва:</small></a>
+    <h1><span id="Moscow_z71d" style="font-size:55px"></span></h1>
+    <script src="//widget.time.is/t.js"></script>
+    <script>time_is_widget.init({Moscow_z71d:{}});</script>
+    </div>
+    </div>
+
+    <div class="row">
+    <div class="col-lg-6">
+    <div class="card border-secondary mb-3" style="max-width: 30rem;">
+    <div class="card-header text-center" style="background-color:#c3e6cb;font-size: 45px;">Понедельник</div>
+    <div class="card-body text-primary" style="font-size: 35px;">
+    <p class="card-text"><a href="{{ monday.videolink1 }}" target="_blank" title="открыть видеоурок">{{ monday1 }}</a>
+    <a style="font-size: 25px;" href="{{ monday.pdflink1 }}" target="_blank"><!-- русский приложение -->
+    <img src="{{ url_for('static', filename='img/pdf-icon.svg') }}" title="открыть приложение к уроку" width="10%"/></a></p>
+    <p class="card-text"><a href="{{ monday.videolink2 }}" target="_blank" title="открыть видеоурок">{{ monday2 }}</a>
+    <a style="font-size: 25px;" href="{{ monday.pdflink2 }}" target="_blank"><!-- чтение приложение -->
+    <img src="{{ url_for('static', filename='img/pdf-icon.svg') }}" title="открыть приложение к уроку" width="10%"/></a></p>
+    <p class="card-text"><a href="{{ monday.videolink3 }}" target="_blank" title="открыть видеоурок">{{ monday3 }}</a>
+    <a style="font-size: 25px;" href="{{ monday.pdflink3 }}" target="_blank"><!-- математика приложение -->
+    <img src="{{ url_for('static', filename='img/pdf-icon.svg') }}" title="открыть приложение к уроку" width="10%"/></a></p>
+    </div>
+    </div>
+    </div>
+    <div class="col-lg-6">
+    <div class="card border-secondary mb-3" style="max-width: 30rem;">
+    <div class="card-header text-center" style="background-color:#f5c6cb;font-size: 45px;">Вторник</div>
+    <div class="card-body text-primary" style="font-size: 35px;">
+    <p class="card-text"><a href="{{ tuesday.videolink1 }}" target="_blank" title="открыть видеоурок">{{ tuesday1 }}</a>
+    <a style="font-size: 25px;" href="{{ tuesday.pdflink1 }}" target="_blank"><!-- русский приложение -->
+    <img src="{{ url_for('static', filename='img/pdf-icon.svg') }}" title="открыть приложение к уроку" width="10%"/></a></p>
+    <p class="card-text"><a href="{{ tuesday.videolink2 }}" target="_blank" title="открыть видеоурок">{{ tuesday2 }}</a>
+    <a style="font-size: 25px;" href="{{ tuesday.pdflink2 }}" target="_blank"><!-- математика приложение -->
+    <img src="{{ url_for('static', filename='img/pdf-icon.svg') }}" title="открыть приложение к уроку" width="10%"/></a></p>
+    <p class="card-text"><a href="{{ tuesday.videolink3 }}" target="_blank" title="открыть видеоурок">{{ tuesday3 }}</a>
+    <a style="font-size: 25px;" href="{{ tuesday.pdflink3 }}" target="_blank"><!-- окружающий приложение -->
+    <img src="{{ url_for('static', filename='img/pdf-icon.svg') }}" title="открыть приложение к уроку" width="10%"/></a></p>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="row">
+    <div class="col-lg-6">
+    <div class="card border-secondary mb-3" style="max-width: 30rem;">
+    <div class="card-header text-center" style="background-color:#bee5eb;font-size: 45px;">Среда</div>
+    <div class="card-body text-primary" style="font-size: 35px;">
+    <p class="card-text" title="открыть видеоурок"><a href="{{ wednesday.videolink1 }}" target="_blank">{{ wednesday1 }}</a>
+    <a style="font-size: 25px;" href="{{ wednesday.pdflink1 }}" target="_blank"><!-- русский приложение -->
+    <img src="{{ url_for('static', filename='img/pdf-icon.svg') }}" title="открыть приложение к уроку" width="10%"/></a></p>
+    <p class="card-text" title="открыть видеоурок"><a href="{{ wednesday.videolink2 }}" target="_blank">{{ wednesday2 }}</a>
+    <a style="font-size: 25px;" href="{{ wednesday.pdflink2 }}" target="_blank"><!-- чтение приложение -->
+    <img src="{{ url_for('static', filename='img/pdf-icon.svg') }}" title="открыть приложение к уроку" width="10%"/></a></p>
+    <p class="card-text" title="открыть видеоурок"><a href="{{ wednesday.videolink3 }}" target="_blank">{{ wednesday3 }}</a>
+    <a style="font-size: 25px;" href="{{ wednesday.pdflink3 }}" target="_blank"><!-- математика приложение -->
+    <img src="{{ url_for('static', filename='img/pdf-icon.svg') }}" title="открыть приложение к уроку" width="10%"/></a></p>
+    </div>
+    </div>
+    </div>
+    <div class="col-lg-6">
+    <div class="card border-secondary mb-3" style="max-width: 30rem;">
+    <div class="card-header text-center" style="background-color:#ffe8a1;font-size: 45px;">Четверг</div>
+    <div class="card-body text-primary" style="font-size: 35px;">
+    <p class="card-text"><a href="{{ thursday.videolink1 }}" target="_blank" title="открыть видеоурок">{{ thursday1 }}</a>
+    <a style="font-size: 25px;" href="{{ thursday.pdflink1 }}" target="_blank"><!-- русский приложение -->
+    <img src="{{ url_for('static', filename='img/pdf-icon.svg') }}" title="открыть приложение к уроку" width="10%"/></a></p>
+    <p class="card-text"><a href="{{ thursday.videolink2 }}" target="_blank" title="открыть видеоурок">{{ thursday2 }}</a>
+    <a style="font-size: 25px;" href="{{ thursday.pdflink2 }}" target="_blank"><!-- чтение приложение -->
+    <img src="{{ url_for('static', filename='img/pdf-icon.svg') }}" title="открыть приложение к уроку" width="10%"/></a></p>
+    <p class="card-text"><a href="{{ thursday.videolink3 }}" target="_blank" title="открыть видеоурок">{{ thursday3 }}</a>
+    <a style="font-size: 25px;" href="{{ thursday.pdflink3 }}" target="_blank"><!-- окружающий приложение -->
+    <img src="{{ url_for('static', filename='img/pdf-icon.svg') }}" title="открыть приложение к уроку" width="10%"/></a></p>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="row">
+    <div class="col-lg-6">
+    <div class="card border-secondary mb-3" style="max-width: 30rem;">
+    <div class="card-header text-center" style="background-color:#f5c6cb;font-size: 45px;">Пятница</div>
+    <div class="card-body text-primary" style="font-size: 35px;">
+    <p class="card-text"><a href="{{ friday.videolink1 }}" target="_blank" title="открыть видеоурок">{{ friday1 }}</a>
+    <a style="font-size: 25px;" href="{{ friday.pdflink1 }}" target="_blank"><!-- русский приложение -->
+    <img src="{{ url_for('static', filename='img/pdf-icon.svg') }}" title="открыть приложение к уроку" width="10%"/></a></p>
+    <p class="card-text"><a href="{{ friday.videolink2 }}" target="_blank" title="открыть видеоурок">{{ friday2 }}</a>
+    <a style="font-size: 25px;" href="{{ friday.pdflink2 }}" target="_blank"><!-- математика приложение -->
+    <img src="{{ url_for('static', filename='img/pdf-icon.svg') }}" title="открыть приложение к уроку" width="10%"/></a></p>
+    <p class="card-text"><a href="{{ friday.videolink3 }}" target="_blank" title="открыть видеоурок">{{ friday3 }}</a>
+    <a style="font-size: 25px;" href="{{ friday.pdflink3 }}" target="_blank"><!-- развитие речи приложение -->
+    <img src="{{ url_for('static', filename='img/pdf-icon.svg') }}" title="открыть приложение к уроку" width="10%"/></a></p>
+    </div>
+    </div>
+    </div>
+
+    <div class="col-lg-6">
+    <p class="text-center" style="font-size: 45px;">Физминутка</p>
+    <div class="card-body text-primary" style="font-size: 35px;">
+    <p class="card-text text-center"><a style="background-color:#bee5eb;" target="_blank" href="{{ url_for('static', filename='fizminutka/dance1.mp4') }}">вариант 1</a></p>
+    <p class="card-text text-center"><a style="background-color:#f5c6cb;" target="_blank" href="{{ url_for('static', filename='fizminutka/dance2.mp4') }}">вариант 2</a></p>
+    <p class="card-text text-center"><a style="background-color:#ffe8a1;" target="_blank" href="{{ url_for('static', filename='fizminutka/dance3.mp4') }}">вариант 3</a></p>
+    </div>
+    </div>
+    </div>
+
+  </body>
+
+</html>

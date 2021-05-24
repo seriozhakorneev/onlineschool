@@ -1,0 +1,151 @@
+{% from "_render_fields.html" import render_field, render_email_field, render_textarea_field %}
+<!DOCTYPE html>
+<html lang="ru" prefix="og: //ogp.me/ns#">
+  <head>
+    <meta charset="utf-8">
+    <title>Получить урок</title>
+    <meta property="og:title" content="Получить урок" />
+    <meta property="og:image" content="{{ url_for('static', filename='img/logo.jpg') }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.min.css') }}">
+    <style type="text/css">
+    li {list-style-type: none; /* Убираем маркеры */}
+    A {text-decoration: none; /* Убирает подчеркивание для ссылок */}
+    A:hover {text-decoration: underline; /* Добавляем подчеркивание при наведении курсора на ссылку */}
+    </style>
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+    <div class="container">
+    <a href="{{ url_for('index') }}" class="nav-link js-scroll-trigger">← Вернуться на главную</a>
+    </div>
+    </div>
+
+    <div class="container">
+
+    <div class="row">
+    <div class="col-lg-10">
+    {% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-dismissible alert-success text-center">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    Бесплатный урок успешно отправлен!
+    <br><span class="text-danger">Внимание! Не забудьте проверить папку спам!</span>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="alert alert-dismissible alert-primary text-center">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    Обратите внимание на корректность введенных данных.
+    </div>
+    {% endif %}
+    {% endwith %}
+    <ul class="nav nav-tabs">
+    <li class="nav-item">
+    <a class="nav-link active show" data-toggle="tab" href="#free">Получить бесплатный урок</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#question">Задать Вопрос</a>
+    </li>
+    </ul>
+
+    <div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade active show" id="free">
+    <div class="container">
+    <div class="row">
+    <div class="col-lg-4">
+    <legend class="text-center">Введите свой адрес электронной почты<br>и получите пробный бесплатный урок</legend>
+    </div>
+    <div class="col-lg-4">
+    <form method="POST" action="{{ url_for('lesson') }}">
+    <fieldset>
+    {{ lesson_form.csrf_token }}
+    <br>
+    <div class="form-group">
+    {{ render_email_field(lesson_form.email,placeholder=lesson_form.email.label.text) }}
+    </div>
+    <div class="form-group">
+    <button type="submit" class="btn btn-primary btn-block">Получить</button>
+    </div>
+    </fieldset>
+    </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="tab-pane fade" id="question">
+    <div class="container">
+    <form method="POST" action="{{ url_for('question') }}">
+    <fieldset>
+    {{ question_form.csrf_token }}
+    <div class="row">
+    <div class="col-lg-8">
+    <div class="form-group">
+    {{ render_textarea_field(question_form.question, placeholder=question_form.question.label.text) }}
+    </div>
+    </div>
+    <div class="col-lg-4">
+    <div class="form-group">
+    {{ render_field(question_form.recaptcha) }}
+    </div>
+    <div class="form-group">
+    {{ render_email_field(question_form.email, placeholder=question_form.email.label.text) }}
+    </div>
+    <div class="form-group">
+    <button type="submit" class="btn btn-primary btn-block">Отправить</button>
+    </div>
+    </div>
+    </div>
+    </fieldset>
+    </form>
+    </div>
+    </div>
+    </div>
+
+    </div>
+    </div>
+
+    <br>
+    <div class="row">
+    <div class="col-lg-3"><!--пусто--></div>
+    <div class="col-lg-5">
+    <img width="100%" alt="family" src="{{ url_for('static', filename='img/family-board.jpg') }}">
+    </div>
+    </div>
+
+    </div>
+
+
+    <div class="container" style="font-size:20px;" >
+    <footer id="footer">
+    <div class="row">
+    <div class="col-lg-12">
+    <div class="row">
+    <div class="col-lg-4">
+    
+    </div>
+    <div class="col-lg-8">
+    
+    </div>
+    </div>
+    </div>
+    </div>
+    </footer>
+    </div>
+
+    <!--style="border: 1px solid black;"-->
+
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.easing.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/new-age.min.js') }}"></script>
+  </body>
+</html>

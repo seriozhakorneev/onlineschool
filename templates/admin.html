@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ru" prefix="og: //ogp.me/ns#">
+  <head>
+    <meta charset="utf-8">
+    <title>Админ</title>
+    <meta property="og:title" content="3 класс" />
+    <meta property="og:image" content="{{ url_for('static', filename='img/logo.jpg') }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.min.css') }}">
+    <style type="text/css">
+    li {list-style-type: none; /* Убираем маркеры */}
+    A {text-decoration: none; /* Убирает подчеркивание для ссылок */}
+    A:hover {text-decoration: underline; /* Добавляем подчеркивание при наведении курсора на ссылку */}
+    </style>
+  </head>
+{% if table == 'pre_class' %}
+{% set class_name = 'Подготовка к школе' %}
+{% set monday1 = 'я-ученик' %}
+{% set monday2 = 'обучение грамоте' %}
+{% set monday3 = 'подготовка к письму' %}
+{% set tuesday1 = 'обучение грамоте' %}
+{% set tuesday2 = 'подготовка к письму' %}
+{% set tuesday3 = 'математика' %}
+{% set wednesday1 = 'окружающий мир' %}
+{% set wednesday2 = 'подготовка к письму' %}
+{% set wednesday3 = 'математика' %}
+{% set thursday1 = 'обучение грамоте' %}
+{% set thursday2 = 'подготовка к письму' %}
+{% set thursday3 = 'математика' %}
+{% set friday1 = 'мир художественной литературы' %}
+{% set friday2 = 'подготовка к письму' %}
+{% set friday3 = 'математика' %}
+
+{% elif table == 'first_class' %}
+{% set class_name = '1 класс' %}
+{% set monday1 = 'обучение грамоте' %}
+{% set monday2 = 'письмо' %}
+{% set monday3 = 'математика' %}
+{% set tuesday1 = 'обучение грамоте' %}
+{% set tuesday2 = 'письмо' %}
+{% set tuesday3 = 'математика' %}
+{% set wednesday1 = 'обучение грамоте' %}
+{% set wednesday2 = 'письмо' %}
+{% set wednesday3 = 'окружающий мир' %}
+{% set thursday1 = 'обучение грамоте' %}
+{% set thursday2 = 'письмо' %}
+{% set thursday3 = 'математика' %}
+{% set friday1 = 'математика' %}
+{% set friday2 = 'окружающий мир' %}
+{% set friday3 = 'мир художественной литературы' %}
+
+{% elif table == 'second_class' %}
+{% set class_name = '2 класс' %}
+{% set monday1 = 'русский язык' %}
+{% set monday2 = 'литературное чтение' %}
+{% set monday3 = 'математика' %}
+{% set tuesday1 = 'русский язык' %}
+{% set tuesday2 = 'математика' %}
+{% set tuesday3 = 'окружающий мир' %}
+{% set wednesday1 = 'русский язык' %}
+{% set wednesday2 = 'литературное чтение' %}
+{% set wednesday3 = 'математика' %}
+{% set thursday1 = 'русский язык' %}
+{% set thursday2 = 'литературное чтение' %}
+{% set thursday3 = 'окружающий мир' %}
+{% set friday1 = 'русский язык' %}
+{% set friday2 = 'математика' %}
+{% set friday3 = 'риторика/решение логических задач' %}
+
+{% elif table == 'third_class' %}
+{% set class_name = '3 класс' %}
+{% set monday1 = 'русский язык' %}
+{% set monday2 = 'литературное чтение' %}
+{% set monday3 = 'математика' %}
+{% set tuesday1 = 'русский язык' %}
+{% set tuesday2 = 'математика' %}
+{% set tuesday3 = 'окружающий мир' %}
+{% set wednesday1 = 'русский язык' %}
+{% set wednesday2 = 'литературное чтение' %}
+{% set wednesday3 = 'математика' %}
+{% set thursday1 = 'русский язык' %}
+{% set thursday2 = 'литературное чтение' %}
+{% set thursday3 = 'окружающий мир' %}
+{% set friday1 = 'русский язык' %}
+{% set friday2 = 'математика' %}
+{% set friday3 = 'развитие речи' %}
+
+{% elif table == 'fourth_class' %}
+{% set class_name = '4 класс' %}
+{% set monday1 = 'русский язык' %}
+{% set monday2 = 'литературное чтение' %}
+{% set monday3 = 'математика' %}
+{% set tuesday1 = 'русский язык' %}
+{% set tuesday2 = 'математика' %}
+{% set tuesday3 = 'окружающий мир' %}
+{% set wednesday1 = 'русский язык' %}
+{% set wednesday2 = 'литературное чтение' %}
+{% set wednesday3 = 'математика' %}
+{% set thursday1 = 'русский язык' %}
+{% set thursday2 = 'литературное чтение' %}
+{% set thursday3 = 'окружающий мир' %}
+{% set friday1 = 'русский язык' %}
+{% set friday2 = 'математика' %}
+{% set friday3 = 'подготовка к ВПР' %}
+
+{% elif table == 'indi_class' %}
+{% set class_name = 'Индивидуальная программа' %}
+{% set monday1 = '1 урок' %}
+{% set monday2 = '2 урок' %}
+{% set monday3 = '3 урок' %}
+{% set tuesday1 = '1 урок' %}
+{% set tuesday2 = '2 урок' %}
+{% set tuesday3 = '3 урок' %}
+{% set wednesday1 = '1 урок' %}
+{% set wednesday2 = '2 урок' %}
+{% set wednesday3 = '3 урок' %}
+{% set thursday1 = '1 урок' %}
+{% set thursday2 = '2 урок' %}
+{% set thursday3 = '3 урок' %}
+{% set friday1 = '1 урок' %}
+{% set friday2 = '2 урок' %}
+{% set friday3 = '3 урок' %}
+
+{% endif %}
+<body class="text-black">
+
+<div class="navbar navbar-expand-lg fixed-top navbar-light bg-light" style="font-size: 20px;">
+<div class="container">
+<a href="{{ url_for('logout') }}" class="nav-link">← Выйти</a>
+<div class="collapse navbar-collapse" id="navbarResponsive">
+<ul class="nav navbar-nav ml-auto">
+<li class="nav-item">
+<a class="nav-link" href="{{ url_for('users') }}">Управление пользователями</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div>
+  <ul class="pagination">
+    {% if table == 'pre_class' %}
+    <li class="page-item active">
+      <a class="page-link" href="{{ url_for('admin', table='pre_class') }}">подготовка</a>
+    </li>
+    {% else %}
+    <li class="page-item">
+      <a class="page-link" href="{{ url_for('admin', table='pre_class') }}">подготовка</a>
+    </li>
+    {% endif %}
+    {% if table == 'first_class' %}
+    <li class="page-item active">
+      <a class="page-link" href="{{ url_for('admin', table='first_class') }}">1</a>
+    </li>
+    {% else %}
+    <li class="page-item">
+      <a class="page-link" href="{{ url_for('admin', table='first_class') }}">1</a>
+    </li>
+    {% endif %}
+    {% if table == 'second_class' %}
+    <li class="page-item active">
+      <a class="page-link" href="{{ url_for('admin', table='second_class') }}">2</a>
+    </li>
+    {% else %}
+    <li class="page-item">
+      <a class="page-link" href="{{ url_for('admin', table='second_class') }}">2</a>
+    </li>
+    {% endif %}
+    {% if table == 'third_class' %}
+    <li class="page-item active">
+      <a class="page-link" href="{{ url_for('admin', table='third_class') }}">3</a>
+    </li>
+    {% else %}
+    <li class="page-item">
+      <a class="page-link" href="{{ url_for('admin', table='third_class') }}">3</a>
+    </li>
+    {% endif %}
+    {% if table == 'fourth_class' %}
+    <li class="page-item active">
+      <a class="page-link" href="{{ url_for('admin', table='fourth_class') }}">4</a>
+    </li>
+    {% else %}
+    <li class="page-item">
+      <a class="page-link" href="{{ url_for('admin', table='fourth_class') }}">4</a>
+    </li>
+    {% endif %}
+    {% if table == 'indi_class' %}
+    <li class="page-item active">
+      <a class="page-link" href="{{ url_for('admin', table='indi_class') }}">индивидуальная</a>
+    </li>
+    {% else %}
+    <li class="page-item">
+      <a class="page-link" href="{{ url_for('admin', table='indi_class') }}">индивидуальная</a>
+    </li>
+    {% endif %}
+     
+  </ul>
+</div>
+
+<p class="text-center" style="font-size: 30px;">
+<a href="" data-toggle="modal" data-target="#schedule" title="информация по курсу">{{ class_name }}</a></p>
+
+
+<table class="table table-hover"  style="font-size: 22px;">
+<thead>
+<tr>
+<th scope="col">День\Урок</th>
+<th scope="col">1 урок</th>
+<th scope="col">2 урок</th>
+<th scope="col">3 урок</th>
+</tr>
+</thead>
+<tbody>
+{% for lesson in lessons %}
+<tr class="table-active">
+<th scope="row">{{ lesson.day }}</th>
+<td><a href="{{ lesson.videolink1 }}" target="_blank">Видеоурок</a>
+<a class="text-success"
+href="{{ url_for('linkchange', table=table, day=lesson.day, linktype='video', link='videolink1' ) }}">изменить</a><br>
+<a href="{{ lesson.pdflink1 }}" target="_blank">Приложение</a>
+<a class="text-success" 
+href="{{ url_for('linkchange', table=table, day=lesson.day, linktype='pdf', link='pdflink1' ) }}">изменить</a></td>
+<td><a href="{{ lesson.videolink2 }}" target="_blank">Видеоурок</a> 
+<a class="text-success"
+href="{{ url_for('linkchange', table=table, day=lesson.day, linktype='video', link='videolink2' ) }}">изменить</a><br>
+<a href="{{ lesson.pdflink2 }}" target="_blank">Приложение</a>
+<a class="text-success" 
+href="{{ url_for('linkchange', table=table, day=lesson.day, linktype='pdf', link='pdflink2' ) }}">изменить</a></td>
+<td><a href="{{ lesson.videolink3 }}" target="_blank">Видеоурок</a> 
+<a class="text-success"
+href="{{ url_for('linkchange', table=table, day=lesson.day, linktype='video', link='videolink3' ) }}">изменить</a><br>
+<a href="{{ lesson.pdflink3 }}" target="_blank">Приложение</a>
+<a class="text-success" 
+href="{{ url_for('linkchange', table=table, day=lesson.day, linktype='pdf', link='pdflink3' ) }}">изменить</a></td>  
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+    <!-- start modal schedule -->
+    <div id="schedule" class="modal fade">
+    <div class="modal-dialog modal-lg">
+    <div class="modal-content lead">
+    <div class="modal-body">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <div class="container">
+    <p class="modal-title text-center" style="font-size:30px;"><strong>Расписание {{ class_name }}</strong></p>
+    <div class="row">
+    <div class="col-lg-6">
+    <div class="card border-secondary mb-3" style="max-width: 20rem;">
+    <div class="card-header text-center" style="background-color:#c3e6cb;">Понедельник</div>
+    <div class="card-body text-primary">
+    <p class="card-text">1 {{ monday1 }}</p>
+    <p class="card-text">2 {{ monday2 }}</p>
+    <p class="card-text">3 {{ monday3 }}</p>
+    </div>
+    </div>
+    </div>
+    <div class="col-lg-6">
+    <div class="card border-secondary mb-3" style="max-width: 20rem;">
+    <div class="card-header text-center" style="background-color:#f5c6cb;">Вторник</div>
+    <div class="card-body text-primary">
+    <p class="card-text">1 {{ tuesday1 }}</p>
+    <p class="card-text">2 {{ tuesday2 }}</p>
+    <p class="card-text">3 {{ tuesday3 }}</p>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-lg-6">
+    <div class="card border-secondary mb-3" style="max-width: 20rem;">
+    <div class="card-header text-center" style="background-color:#bee5eb;">Среда</div>
+    <div class="card-body text-primary">
+    <p class="card-text">1 {{ wednesday1 }}</p>
+    <p class="card-text">2 {{ wednesday2 }}</p>
+    <p class="card-text">3 {{ wednesday3 }}</p>
+    </div>
+    </div>
+    </div>
+    <div class="col-lg-6">
+    <div class="card border-secondary mb-3" style="max-width: 20rem;">
+    <div class="card-header text-center" style="background-color:#ffe8a1;">Четверг</div>
+    <div class="card-body text-primary">
+    <p class="card-text">1 {{ thursday1 }}</p>
+    <p class="card-text">2 {{ thursday2 }}</p>
+    <p class="card-text">3 {{ thursday3 }}</p>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-lg-6">
+    <div class="card border-secondary mb-3" style="max-width: 20rem;">
+    <div class="card-header text-center" style="background-color:#f5c6cb;">Пятница</div>
+    <div class="card-body text-primary">
+    <p class="card-text">1 {{ friday1 }}</p>
+    <p class="card-text">2 {{ friday2 }}</p>
+    <p class="card-text">3 {{ friday3 }}</p>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <!--end modal schedule-->
+
+    <!--style="border: 1px solid black;"-->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.easing.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/new-age.min.js') }}"></script>
+  </body>
+
+</html>

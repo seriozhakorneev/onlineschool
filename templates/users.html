@@ -1,0 +1,94 @@
+{% from "_render_fields.html" import render_text_field %}
+<!DOCTYPE html>
+<html lang="ru" prefix="og: //ogp.me/ns#">
+  <head>
+    <meta charset="utf-8">
+    <title>Управление пользователями</title>
+    <meta property="og:title" content="3 класс" />
+    <meta property="og:image" content="{{ url_for('static', filename='img/logo.jpg') }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.min.css') }}">
+    <style type="text/css">
+    li {list-style-type: none; /* Убираем маркеры */}
+    A {text-decoration: none; /* Убирает подчеркивание для ссылок */}
+    A:hover {text-decoration: underline; /* Добавляем подчеркивание при наведении курсора на ссылку */}
+    </style>
+  </head>
+
+  <body class="text-black">
+
+    <div class="navbar navbar-expand-lg fixed-top navbar-light bg-light" style="font-size: 20px;">
+    <div class="container">
+    <a href="{{ url_for('admin', table='third_class') }}" class="nav-link js-scroll-trigger">← К урокам</a>
+    </div>
+    </div>
+
+    <div class="container" style="font-size: 18px;">
+    <div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+    <form method="POST" action="{{ url_for('createuser') }}">
+    <fieldset>
+    {{ user_form.csrf_token }}
+    <div class="form-group">
+    {{ render_text_field(user_form.username,placeholder=user_form.username.label.text) }}
+    {{ render_text_field(user_form.class_var,placeholder=user_form.class_var.label.text) }}
+    </div>
+    <div class="form-group">
+    <button type="submit" class="btn btn-primary btn-block">Создать</button>
+    </div>
+    </fieldset>
+    </form>
+    </div>
+    <div class="col-lg-4"></div>
+    </div>
+    <table class="table table-hover">
+    <thead>
+    <tr>
+    <th scope="col">Имя</th>
+    <th scope="col">Класс</th>
+    <th scope="col">Код</th>
+    <th scope="col">#</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for user in users %}
+    {% if user.class_var == 'Admin' %}
+    {% else %}
+    <tr class="table-active">
+    <td>{{ user.username }}</td>
+    {% if user.class_var == 'pre_class' %}
+    <td>Подготовка к школе</td>
+    {% elif user.class_var == 'first_class' %}
+    <td>1 класс</td>
+    {% elif user.class_var == 'second_class' %}
+    <td>2 класс</td>
+    {% elif user.class_var == 'third_class' %}
+    <td>3 класс</td>
+    {% elif user.class_var == 'fourth_class' %}
+    <td>4 класс</td>
+    {% elif user.class_var == 'indi_class' %}
+    <td>Подготовка к школе</td>
+    {% endif %}
+    <td class="text-success">{{ user.password }}</td>
+    <td><a class="text-danger" href="{{ url_for('deleteuser', user_code=user.password) }}">удалить</a></td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+    </tbody>
+    </table> 
+    </div>
+
+    <!--style="border: 1px solid black;"-->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.easing.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/new-age.min.js') }}"></script>
+  </body>
+
+</html>
